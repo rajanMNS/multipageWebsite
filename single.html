@@ -19,6 +19,7 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> 
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
@@ -290,11 +291,36 @@
                                     <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Post Comment" class="btn">
+                                    <input type="button" onclick="postComment()" value="Post Comment" class="btn">
                                 </div>
                             </form>
                         </div>
                     </div>
+
+                    <script type="text/javascript">
+                        function postComment() {
+                            var name = document.getElementById("name").value;
+                            var email = document.getElementById("email").value;
+                            var website = document.getElementById("website").value;
+                            var message = document.getElementById("message").value;
+    
+                            if (name.length < 1) {
+                                alert("Name field is mendatory");
+                            } else if (email.length < 1) {
+                                alert("Username/Email field is mendatory");
+                            } else if (website.length < 1) {
+                                alert("Website field is mendatory");
+                            } else if (message.length < 1) {
+                                alert("Message field is mendatory");
+                            } else {
+                                Swal.fire('Comment added')
+                                document.getElementById('name').value = ''
+                                document.getElementById('email').value = ''
+                                document.getElementById('website').value = ''
+                                document.getElementById('message').value = ''
+                            }
+                        }
+                    </script>
 
                     <div class="col-lg-4">
                         <div class="sidebar">
@@ -686,8 +712,6 @@
         <script src="lib/lightbox/js/lightbox.min.js"></script>
 
         <!-- Contact Javascript File -->
-        <script src="mail/jqBootstrapValidation.min.js"></script>
-        <script src="mail/contact.js"></script>
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
